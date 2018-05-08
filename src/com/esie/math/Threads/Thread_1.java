@@ -13,7 +13,9 @@ public class Thread_1 extends MasterThread {
     @Override
     public void main(){
 
-        if (ListItemHorizontalStack.get("Settings").answer == 1) {
+        int tempListAnswer = ListItemHorizontalStack.get("Settings").answer;
+
+        if (tempListAnswer == 1) {
             ListItemHorizontalStack.get("Settings").answer = 0;
             if (!isSettingsMenuOpened) {
                 new SettingsForm("Settings Items");
@@ -26,12 +28,12 @@ public class Thread_1 extends MasterThread {
 
         if (isSettingsMenuOpened) {
 
-            if (ListItemStack.get("Settings Items").answer == 1) {
+            if (tempListAnswer == 1) {
                 ListItemStack.get("Settings Items").answer = 0;
                 uiMainLayer.uiLayer.Clear();
             }
 
-            if (ListItemStack.get("Settings Items").answer == 2) {
+            if (tempListAnswer == 2) {
                 ListItemStack.get("Settings Items").answer = 0;
                 uiMainLayer.uiLayer.ClearALL();
             }
