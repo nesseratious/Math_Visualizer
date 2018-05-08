@@ -1,4 +1,4 @@
-package com.esie.core.other.backup;
+package com.esie.core.other.Backup;
 import com.esie.core.configurationSingleton.ConfigurationSingleton;
 import com.esie.core.other.ANSI.ANSI;
 import com.esie.core.other.Files.FilesInterface;
@@ -36,7 +36,7 @@ public class Main {
 
     private static void loadConfigFile(){
 
-       // getInstance("backup.configurationSingleton");
+       // getInstance("Backup.configurationSingleton");
        // System.out.println("ConfigurationSingleton loaded." + "\n" +
        //         "Checking source directories...");
        // for (int i = 1; i < 1000; i++) {
@@ -78,7 +78,7 @@ public class Main {
                                     file.getAbsolutePath() + "," + file.length();
                     counter++;
                     percent = counter * 100 / filesImplClass.getCounter();
-                    System.out.print("\r" + ANSI.ANSI_CYAN + "Processing backup manifest " + percent + "%. " +
+                    System.out.print("\r" + ANSI.ANSI_CYAN + "Processing Backup manifest " + percent + "%. " +
                                             ANSI.ANSI_RESET + "File " + (manifestFile+1) + ". " + ANSI.ANSI_GREEN + "Total files: " + counter + "." + ANSI.ANSI_RESET);
                     if (fileListIndex.getBytes().length > 1000000){
                         try (FileOutputStream fos = new FileOutputStream(s + "backup_manifest_" + manifestFile + ".nobackup")) {
@@ -95,10 +95,10 @@ public class Main {
                                       fos.write(encryptToBytes(fileListIndex.getBytes()));
                                       fos.close();
                     }
-            } else System.out.println("\n" + "backup manifest disabled. All files will be copied.");
+            } else System.out.println("\n" + "Backup manifest disabled. All files will be copied.");
         }
         if (Boolean.parseBoolean(configuration.getValue("INDEXING")))
-            System.out.println("\n" + "backup manifest saved.");
+            System.out.println("\n" + "Backup manifest saved.");
     }
 
 
