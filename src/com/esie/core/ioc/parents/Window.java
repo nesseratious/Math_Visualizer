@@ -16,6 +16,7 @@ import com.esie.core.eventObserver.eventTypes.MousePressedEvent;
 import com.esie.core.eventObserver.eventTypes.MouseReleasedEvent;
 import com.esie.core.ui.Element;
 import static java.awt.EventQueue.*;
+import static java.lang.Boolean.*;
 import static java.lang.Integer.*;
 import static java.lang.Thread.*;
 
@@ -80,15 +81,15 @@ public class Window extends Canvas implements WindowInterface {
 		} else frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.add(this);
 		frame.pack();
-		if (Boolean.parseBoolean(configuration.getValue("CENTERED"))) frame.setLocationRelativeTo(null);
-		frame.setResizable(Boolean.parseBoolean(configuration.getValue("RESIZABLE")));
+		if (parseBoolean(configuration.getValue("CENTERED"))) frame.setLocationRelativeTo(null);
+		frame.setResizable(parseBoolean(configuration.getValue("RESIZABLE")));
 		frame.setVisible(true);
 	}
 
 
 	private void render(){
 		gBufferStrategy = getBufferStrategy();
-		Graphics g = gBufferStrategy.getDrawGraphics();
+		var g = gBufferStrategy.getDrawGraphics();
 		try{
 			for (Element element : elements)
 				element.onRender(g);
@@ -101,7 +102,7 @@ public class Window extends Canvas implements WindowInterface {
 
 
 	private void onEvent(Event event) {
-		 for (int i = elements.size() - 1; i >= 0 ; i--)
+		 for (var i = elements.size() - 1; i >= 0 ; i--)
 		 	elements.get(i).onEvent(event);
 	}
 

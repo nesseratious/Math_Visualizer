@@ -39,7 +39,7 @@ final public class uiSwitch extends Element {
 
     @Override
     public void onEvent(Event event) {
-        Dispatcher d = new Dispatcher(event);
+        var d = new Dispatcher(event);
         d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressedAdapter);
     }
 
@@ -51,7 +51,7 @@ final public class uiSwitch extends Element {
 
     @Override
     public void onRender(Graphics g2) {
-        Graphics2D g = (Graphics2D) g2;
+        var g = (Graphics2D) g2;
         g.setRenderingHints(rh);
         g.setFont(font);
         collision = new Rectangle(SwitchX, SwitchY, 50, 30);

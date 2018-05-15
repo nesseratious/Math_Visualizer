@@ -32,7 +32,7 @@ final public class uiTouchController extends Element {
 
     @Override
     public void onEvent(Event event) {
-        Dispatcher d = new Dispatcher(event);
+        var d = new Dispatcher(event);
         d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressedAdapter);
         d.dispatch(Event.Type.MOUSE_RELEASED, this::eventOnReleasedAdapter);
         d.dispatch(Event.Type.MOUSE_MOVED, this::eventOnMovedAdapter);

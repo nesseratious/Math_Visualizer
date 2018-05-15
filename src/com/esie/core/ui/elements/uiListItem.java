@@ -52,8 +52,8 @@ final public class uiListItem extends Element {
         this.arr = new ArrayList<>(arr);
         ListItemStack.put(name, this);
 
-        for(int i = 0; i < num; i++) {
-            Rectangle item = new Rectangle(list_x, list_y, 200, buttons_height);
+        for(var i = 0; i < num; i++) {
+            var item = new Rectangle(list_x, list_y, 200, buttons_height);
             list_y = list_y + buttons_height + 5;
             list.add(item);
             listColor.add(new Color(colorIdle[0],colorIdle[1],colorIdle[2]));
@@ -77,7 +77,7 @@ final public class uiListItem extends Element {
 
     @Override
     public void onEvent(Event event) {
-        Dispatcher d = new Dispatcher(event);
+        var d = new Dispatcher(event);
         d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressAdapter);
         d.dispatch(Event.Type.MOUSE_MOVED, this::eventOnMoveAdapter);
     }
@@ -95,7 +95,7 @@ final public class uiListItem extends Element {
 
     @Override
     public void onRender(Graphics g) {
-        int localAnimationSpeed = Integer.parseInt(config.getValue("ANIMATION_SPEED"));
+        var localAnimationSpeed = Integer.parseInt(config.getValue("ANIMATION_SPEED"));
         g.setFont(font);
         if(renderOnce){
             alpha += localAnimationSpeed * 8;
@@ -116,7 +116,7 @@ final public class uiListItem extends Element {
             g.drawString(name, list_x, list_y - 10);
         }
 
-        for(int i = 0; i < num; i++) {
+        for(var i = 0; i < num; i++) {
             if (hover[i]){
                 if(line > i) {
                     listColor.set(i, new Color(colorHovered[0],colorHovered[1],colorHovered[2]));
@@ -142,7 +142,7 @@ final public class uiListItem extends Element {
 
     @OnEvent
     private boolean onPressed(MousePressedEvent event) {
-        for (int i = 0; i < num; i++)
+        for (var i = 0; i < num; i++)
             if (list.get(i).contains(new Point(event.getX(),event.getY())))
                 answer = i+1;
         return false;
@@ -151,7 +151,7 @@ final public class uiListItem extends Element {
 
     @OnEvent
     private boolean onMoved(MouseMotionEvent event) {
-        for (int i = 0; i < num; i++)
+        for (var i = 0; i < num; i++)
             hover[i] = list.get(i).contains(new Point(event.getX(), event.getY()));
         return false;
     }

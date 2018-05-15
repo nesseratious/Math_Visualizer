@@ -45,7 +45,7 @@ final public class uiColorSelector extends Element {
 
     @Override
     public void onEvent(Event event) {
-        Dispatcher d = new Dispatcher(event);
+        var d = new Dispatcher(event);
         d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressAdapter);
     }
 
@@ -62,7 +62,7 @@ final public class uiColorSelector extends Element {
 
     @OnEvent
     private boolean onPressed(MousePressedEvent event) {
-        int clr = wallpaper.getRGB(event.getX(), event.getY());
+        var clr = wallpaper.getRGB(event.getX(), event.getY());
         red   = (clr & 0x00ff0000) >> 16;
         green = (clr & 0x0000ff00) >> 8;
         blue  = (clr & 0x000000ff);

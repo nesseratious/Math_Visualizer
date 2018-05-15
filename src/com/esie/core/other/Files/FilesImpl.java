@@ -41,10 +41,10 @@ public class FilesImpl implements FilesInterface {
 
      @Override
      public void listFiles(String directoryName, String ext, String noExt){
-        File directory = new File(directoryName);
+        var directory = new File(directoryName);
         File[] fList = directory.listFiles();
         assert fList != null;
-        for (File file : fList) {
+        for (var file : fList) {
             if (file.isFile() && file.getName().endsWith(ext) && !file.getName().endsWith(noExt))
                 addFile(file);
             else if (file.isDirectory())

@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import static com.esie.core.other.ANSI.ANSI.*;
 
 final public class ConfigurationSingleton {
 
@@ -19,6 +20,7 @@ final public class ConfigurationSingleton {
                 configuration.read();
                 return configuration;
             } catch (Exception e) {
+                System.out.println(ANSI_RED + "No config file found!" + ANSI_RESET);
                 e.printStackTrace();
                 return null;
             }
@@ -34,18 +36,22 @@ final public class ConfigurationSingleton {
 
 
     private ConfigurationSingleton(String s) throws IOException {
-        stream = new FileInputStream(s);
+        try {
+            stream = new FileInputStream(s);
+        } catch (IOException e) {
+            stream = new FileInputStream("configuration.properties");
+        }
         data = new byte[stream.available()];
     }
 
 
     private void read() throws IOException {
         stream.read(data);
-        String tempData = new String(data);
-        String[] firstContainer = tempData.split("\n");
+        var tempData = new String(data);
+        String [] firstContainer = tempData.split("\n");
 
         for (String tempContainerItem : firstContainer) {
-           if (tempContainerItem.contains("=")){
+           if (tempContainerItem.contains("=")) {
                String[] secondContainer = tempContainerItem.split("=");
                file.put(secondContainer[0].replaceAll(" ", "").replaceAll("\t", ""),
                         secondContainer[1].replaceAll(" ", "").replaceAll("\t", ""));

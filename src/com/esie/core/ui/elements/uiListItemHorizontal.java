@@ -49,7 +49,7 @@ final public class uiListItemHorizontal extends Element {
         this.arr = new ArrayList<>(arr);
         ListItemHorizontalStack.put(name, this);
 
-        for(int i = 0; i < num; i++) {
+        for(var i = 0; i < num; i++) {
             Rectangle item = new Rectangle(gX, gY, buttonsY, button_space);
             gX = gX + buttonsY + 5;
             list.add(item);
@@ -71,7 +71,7 @@ final public class uiListItemHorizontal extends Element {
 
     @Override
     public void onEvent(Event event) {
-        Dispatcher d = new Dispatcher(event);
+        var d = new Dispatcher(event);
         d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressedAdapter);
         d.dispatch(Event.Type.MOUSE_MOVED, this::eventOnMovedAdapter);
     }
@@ -93,7 +93,7 @@ final public class uiListItemHorizontal extends Element {
         if (this.name.equals("Settings"))
             list.set(0,new Rectangle(windowStack.get("MainForm").getWidth()-305,5,200,30));
 
-        Graphics2D g = (Graphics2D) g2;
+        var g = (Graphics2D) g2;
         g.setRenderingHints(rh);
         g.setFont(font);
         if(renderOnce){
@@ -135,7 +135,7 @@ final public class uiListItemHorizontal extends Element {
 
     @OnEvent
     private boolean onPressed(MousePressedEvent event) {
-        for (int i = 0; i < num; i++)
+        for (var i = 0; i < num; i++)
             if(list.get(i).contains(new Point(event.getX(),event.getY())))
                 answer = i+1;
         return false;
@@ -144,7 +144,7 @@ final public class uiListItemHorizontal extends Element {
 
     @OnEvent
     private boolean onMoved(MouseMotionEvent event) {
-        for (int i = 0; i < num; i++)
+        for (var i = 0; i < num; i++)
             hover[i] = list.get(i).contains(new Point(event.getX(), event.getY()));
         return false;
     }
