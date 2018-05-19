@@ -40,6 +40,12 @@ final public class uiImage extends Element {
     }
 
 
+    public void setPosition(int x, int y){
+        this.imageCoordX = x;
+        this.imageCoordY = y;
+    }
+
+
     @Override
     public void onEvent(Event e) {
 

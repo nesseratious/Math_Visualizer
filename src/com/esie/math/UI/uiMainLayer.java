@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import static com.esie.core.eventObserver.Event.Type.*;
 import static com.esie.core.ioc.parents.Window.windowStack;
+import static com.esie.core.ui.elements.uiImage.ImageStack;
 import static com.esie.core.ui.elements.uiSwitch.SwitchStack;
 import static com.esie.core.ui.elements.uiTouchController.uiTouchControllerStack;
 import static java.awt.Color.*;
@@ -220,6 +221,7 @@ public class uiMainLayer extends Element {
         //line 3
         g.drawString("BC = "+(int)(sin(a)*r)+"",(int)(cos(a)*r)+gX+r,-(int)(sin(a)*r)/2+gY+r+18);
 
+        ImageStack.get("Unit_circle_angles.png").setPosition(gX+r-193, gY+r-193);
     }
 
 
