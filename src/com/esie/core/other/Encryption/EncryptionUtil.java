@@ -21,12 +21,12 @@ public class EncryptionUtil {
 
     public static String getMD5(String text){
         MessageDigest messageDigest;
-        var stringMD5  = new StringBuilder();
+        StringBuilder stringMD5  = new StringBuilder();
         try {
             messageDigest = MessageDigest.getInstance("MD5");
             messageDigest.update(text.getBytes());
             byte[] messageDigestMD5 = messageDigest.digest();
-            for (var bytes : messageDigestMD5)
+            for (int bytes : messageDigestMD5)
                 stringMD5.append(String.format("%02x", bytes & 0xff));
         } catch (NoSuchAlgorithmException e) { e.printStackTrace(); }
         return stringMD5.toString();
@@ -34,8 +34,8 @@ public class EncryptionUtil {
 
 
     public static String encrypt(String data) throws Exception {
-        var key = generateKey();
-        var c = Cipher.getInstance("AES");
+        Key key = generateKey();
+        Cipher c = Cipher.getInstance("AES");
         c.init(Cipher.ENCRYPT_MODE, key);
         byte[] encVal = c.doFinal(data.getBytes());
         return Base64.getEncoder().encodeToString(encVal);
@@ -43,16 +43,16 @@ public class EncryptionUtil {
 
 
     public static byte [] encryptToBytes(byte [] bytes) throws Exception {
-        var key = generateKey();
-        var c = Cipher.getInstance("AES");
+        Key key = generateKey();
+        Cipher c = Cipher.getInstance("AES");
         c.init(Cipher.ENCRYPT_MODE, key);
         return c.doFinal(bytes);
     }
 
 
     public static String decrypt(String encryptedData) throws Exception {
-        var key = generateKey();
-        var c = Cipher.getInstance("AES");
+        Key key = generateKey();
+        Cipher c = Cipher.getInstance("AES");
         c.init(Cipher.DECRYPT_MODE, key);
         byte[] decordedValue = Base64.getDecoder().decode(encryptedData);
         byte[] decValue = c.doFinal(decordedValue);
@@ -61,8 +61,8 @@ public class EncryptionUtil {
 
 
     public static byte [] decryptToBytes(byte [] encryptedData) throws Exception {
-        var key = generateKey();
-        var c = Cipher.getInstance("AES");
+        Key key = generateKey();
+        Cipher c = Cipher.getInstance("AES");
         c.init(Cipher.DECRYPT_MODE, key);
         return c.doFinal(encryptedData);
     }

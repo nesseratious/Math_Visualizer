@@ -19,7 +19,7 @@ public class ConstructThread implements ConstructThreadInterface {
     public ConstructThread(String name, MasterThread mst, int REFRESH_RATE){
         this.name = name;
         this.mst = mst;
-        var tempLogicMaxRefreshRate = parseInt(config.getValue("LOGIC_MAX_REFRESH_RATE"));
+        int tempLogicMaxRefreshRate = parseInt(config.getValue("LOGIC_MAX_REFRESH_RATE"));
 
         if (REFRESH_RATE > 0 && REFRESH_RATE < tempLogicMaxRefreshRate)
             this.REFRESH_RATE = REFRESH_RATE;
@@ -36,7 +36,7 @@ public class ConstructThread implements ConstructThreadInterface {
 
 
     synchronized private void threadStart() {
-        var tempThreadLimit = parseBoolean(config.getValue("THREAD_LIMIT"));
+        boolean tempThreadLimit = parseBoolean(config.getValue("THREAD_LIMIT"));
         new Thread(() -> {
             while(running) {
                 mst.main();
@@ -82,7 +82,7 @@ public class ConstructThread implements ConstructThreadInterface {
 
     @Override
     public void setRefreshRate(int delay) {
-        var tempLogicMaxRefreshRate = parseInt(config.getValue("LOGIC_MAX_REFRESH_RATE"));
+        int tempLogicMaxRefreshRate = parseInt(config.getValue("LOGIC_MAX_REFRESH_RATE"));
         if (delay > 0 && delay < tempLogicMaxRefreshRate)
             this.REFRESH_RATE = delay;
         if (delay > tempLogicMaxRefreshRate)

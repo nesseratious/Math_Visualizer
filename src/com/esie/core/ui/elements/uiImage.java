@@ -33,8 +33,8 @@ final public class uiImage extends Element {
             } catch (IOException e) { e.printStackTrace(); }
         }
         ImageStack.put(name, this);
-        for (var i = 0; i < data.length; i++) {
-            var weight = 1.0f / 25;
+        for (int i = 0; i < data.length; i++) {
+            float weight = 1.0f / 25;
             data[i] = weight;
         }
     }

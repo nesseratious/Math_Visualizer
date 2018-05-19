@@ -277,36 +277,22 @@ public class uiMainLayer extends Element {
     private boolean onKey(KeyButtonEvent event){
 
         if(this.isGraphHovered && SwitchStack.get("Auto Scale").returnAnswer != 1) {
-            if (event.getKeyCode() == KeyEvent.VK_UP)
-                this.GraphScaleY += 8;
-
-            if (event.getKeyCode() == KeyEvent.VK_DOWN)
-                this.GraphScaleY -= 8;
-
-            if (event.getKeyCode() == KeyEvent.VK_LEFT && scale_to_x > 1)
-                this.GraphScaleX += 8;
-
-            if (event.getKeyCode() == KeyEvent.VK_RIGHT)
-                this.GraphScaleX -= 8;
+            if (event.getKeyCode() == KeyEvent.VK_UP) this.GraphScaleY += 8;
+            if (event.getKeyCode() == KeyEvent.VK_DOWN) this.GraphScaleY -= 8;
+            if (event.getKeyCode() == KeyEvent.VK_LEFT && scale_to_x > 1) this.GraphScaleX += 8;
+            if (event.getKeyCode() == KeyEvent.VK_RIGHT) this.GraphScaleX -= 8;
         }
 
         if(this.isTFuncHovered) {
-            if (event.getKeyCode() == KeyEvent.VK_LEFT )
-                this.a += 0.1;
-
-            if (event.getKeyCode() == KeyEvent.VK_RIGHT)
-                this.a -= 0.1;
+            if (event.getKeyCode() == KeyEvent.VK_LEFT ) this.a += 0.1;
+            if (event.getKeyCode() == KeyEvent.VK_RIGHT) this.a -= 0.1;
         }
         return true;
     }
 
     private boolean onMoved(MouseMotionEvent event) {
-
-        isGraphHovered = GraphCollision.contains(
-                new Point(event.getX( ), event.getY( )));
-        isTFuncHovered = TFuncCollision.contains(
-                new Point(event.getX( ), event.getY( )));
-
+        isGraphHovered = GraphCollision.contains(new Point(event.getX( ), event.getY( )));
+        isTFuncHovered = TFuncCollision.contains(new Point(event.getX( ), event.getY( )));
         MouseX = event.getX();
         MouseY = event.getY();
         return false;

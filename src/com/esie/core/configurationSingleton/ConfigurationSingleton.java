@@ -47,7 +47,7 @@ final public class ConfigurationSingleton {
 
     private void read() throws IOException {
         stream.read(data);
-        var tempData = new String(data);
+        String tempData = new String(data);
         String [] firstContainer = tempData.split("\n");
 
         for (String tempContainerItem : firstContainer) {

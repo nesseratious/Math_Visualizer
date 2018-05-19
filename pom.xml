@@ -1,17 +1,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.company.app</groupId>
-  <artifactId>my-app</artifactId>
+  <groupId>com.esie</groupId>
+  <artifactId>deplom</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>my-app</name>
+  <version>1.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <name>deplom</name>
   <url>http://maven.apache.org</url>
 
   <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <maven.compiler.source>1.9</maven.compiler.source>
-      <maven.compiler.target>1.9</maven.compiler.target>
+      <maven.compiler.source>1.10</maven.compiler.source>
+      <maven.compiler.target>1.10</maven.compiler.target>
     <kotlin.version>1.2.41</kotlin.version>
   </properties>
 

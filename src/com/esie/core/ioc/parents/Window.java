@@ -89,7 +89,7 @@ public class Window extends Canvas implements WindowInterface {
 
 	private void render(){
 		gBufferStrategy = getBufferStrategy();
-		var g = gBufferStrategy.getDrawGraphics();
+		Graphics g = gBufferStrategy.getDrawGraphics();
 		try{
 			for (Element element : elements)
 				element.onRender(g);
@@ -102,7 +102,7 @@ public class Window extends Canvas implements WindowInterface {
 
 
 	private void onEvent(Event event) {
-		 for (var i = elements.size() - 1; i >= 0 ; i--)
+		 for (int i = elements.size() - 1; i >= 0 ; i--)
 		 	elements.get(i).onEvent(event);
 	}
 

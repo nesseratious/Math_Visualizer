@@ -4,6 +4,8 @@ import com.esie.core.ui.elements.uiListItemHorizontal;
 import com.esie.math.UI.uiMainLayer;
 import com.esie.math.Forms.ColorSelectForm;
 import java.util.ArrayList;
+import java.util.List;
+
 import static com.esie.core.ioc.parents.Window.windowStack;
 import static com.esie.core.ui.elements.uiListItemHorizontal.ListItemHorizontalStack;
 import static com.esie.core.ui.elements.uiSwitch.SwitchStack;
@@ -14,12 +16,12 @@ public class Thread_0 extends MasterThread {
     private static volatile String tab;
 
     @Override
-    public void main(){
+    public void main() {
 
-        if (ListItemHorizontalStack.get("Open").answer == 1) {
+        if (!expanded && ListItemHorizontalStack.get("Open").answer == 1) {
             ListItemHorizontalStack.get("Open").answer = 0;
             windowStack.get("MainForm").destruct(ListItemHorizontalStack.get("Open"));
-                ArrayList<String> args = new ArrayList<>();
+                List<String> args = new ArrayList<>();
                 args.add("Sin");
                 args.add("Cos");
                 args.add("Tan");
@@ -38,16 +40,14 @@ public class Thread_0 extends MasterThread {
         }
 
         if (expanded) {
-
             if (ListItemHorizontalStack.get("Tabs").answer == 1) {
                 ListItemHorizontalStack.get("Tabs").answer = 0;
                 tab = "sin";
                 uiMainLayer.uiLayer.Clear();
-
                 if (SwitchStack.get("Sync").returnAnswer <= 0) {
                     new Thread(() -> {
                         for (double i = -10; i <= 10; ) {
-                            i += 0.002;
+                            i += 0.003;
                             double y = (Math.sin(i));
                             uiMainLayer.uiLayer.Set(i, y);
                         }
@@ -59,11 +59,10 @@ public class Thread_0 extends MasterThread {
                 ListItemHorizontalStack.get("Tabs").answer = 0;
                 tab = "cos";
                 uiMainLayer.uiLayer.Clear();
-
                 if (SwitchStack.get("Sync").returnAnswer <= 0) {
                     new Thread(() -> {
                         for (double i = -10; i <= 10; ) {
-                            i += 0.002;
+                            i += 0.003;
                             double y = (Math.cos(i));
                             uiMainLayer.uiLayer.Set(i, y);
                         }
@@ -78,7 +77,7 @@ public class Thread_0 extends MasterThread {
                 if (SwitchStack.get("Sync").returnAnswer <= 0) {
                     new Thread(() -> {
                         for (double i = -10; i <= 10; ) {
-                            i += 0.002;
+                            i += 0.003;
                             double y = (Math.tan(i));
                             uiMainLayer.uiLayer.Set(i, y);
                         }
@@ -93,7 +92,7 @@ public class Thread_0 extends MasterThread {
                 if (SwitchStack.get("Sync").returnAnswer <= 0) {
                     new Thread(() -> {
                         for (double i = -10; i <= 10; ) {
-                            i += 0.002;
+                            i += 0.003;
                             double y = (Math.atan(i));
                             uiMainLayer.uiLayer.Set(i, y);
                         }

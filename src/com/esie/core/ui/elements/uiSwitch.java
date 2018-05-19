@@ -9,6 +9,8 @@ import java.awt.*;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static java.lang.Integer.*;
+
 final public class uiSwitch extends Element {
 
     private ConfigurationSingleton config = ConfigurationSingleton.getInstance("src/resources/configuration.properties");
@@ -39,7 +41,7 @@ final public class uiSwitch extends Element {
 
     @Override
     public void onEvent(Event event) {
-        var d = new Dispatcher(event);
+        Dispatcher d = new Dispatcher(event);
         d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressedAdapter);
     }
 
@@ -51,13 +53,12 @@ final public class uiSwitch extends Element {
 
     @Override
     public void onRender(Graphics g2) {
-        var g = (Graphics2D) g2;
+        Graphics2D g = (Graphics2D) g2;
         g.setRenderingHints(rh);
         g.setFont(font);
         collision = new Rectangle(SwitchX, SwitchY, 50, 30);
-
-        if(renderOnce){
-           animationColor += Integer.parseInt(config.getValue("ANIMATION_SPEED"));
+        if(renderOnce) {
+           animationColor += parseInt(config.getValue("ANIMATION_SPEED"));
            if (animationColor >= 140) {
                animationColor = 140;
                renderOnce = false;
@@ -65,21 +66,14 @@ final public class uiSwitch extends Element {
         }
         if (animation == 1) {
             switch_y++;
-            if (switch_y == 20) {
-                animation = 0;
-            }
+            if (switch_y == 20) animation = 0;
         }
         if (animation == -1) {
             switch_y--;
-            if (switch_y == 0) {
-                animation = 0;
-            }
+            if (switch_y == 0) animation = 0;
         }
-
-        if (!answer)
-            g.setColor(new Color(colorIdle[0], colorIdle[1], colorIdle[2],255));
-        else
-            g.setColor(new Color(colorHovered[0], colorHovered[1], colorHovered[2],255));
+        if (!answer) g.setColor(new Color(colorIdle[0], colorIdle[1], colorIdle[2],255));
+        else g.setColor(new Color(colorHovered[0], colorHovered[1], colorHovered[2],255));
 
         g.fillOval(SwitchX, SwitchY, 30, 30);
         g.fillOval(SwitchX + 20, SwitchY, 30, 30);
@@ -95,6 +89,7 @@ final public class uiSwitch extends Element {
     public void onDestroy() {
         SwitchStack.remove(name);
     }
+
 
     public void setState(){
         if (this.answer) {
