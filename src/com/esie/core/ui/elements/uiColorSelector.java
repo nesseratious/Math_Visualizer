@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import static com.esie.core.eventObserver.Event.Type.*;
 import static com.esie.core.ioc.parents.Window.windowStack;
 import static com.esie.core.ui.elements.uiListItemHorizontal.ListItemHorizontalStack;
 import static com.esie.math.UI.uiMainLayer.uiLayer;
@@ -46,7 +47,7 @@ final public class uiColorSelector extends Element {
     @Override
     public void onEvent(Event event) {
         Dispatcher d = new Dispatcher(event);
-        d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressAdapter);
+        d.dispatch(MOUSE_PRESSED, this::eventOnPressAdapter);
     }
 
 

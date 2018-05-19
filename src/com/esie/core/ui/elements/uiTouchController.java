@@ -10,6 +10,8 @@ import com.esie.core.ui.Element;
 import java.awt.*;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import static com.esie.core.eventObserver.Event.Type.*;
+import static java.lang.Integer.*;
 
 final public class uiTouchController extends Element {
 
@@ -33,9 +35,9 @@ final public class uiTouchController extends Element {
     @Override
     public void onEvent(Event event) {
         Dispatcher d = new Dispatcher(event);
-        d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressedAdapter);
-        d.dispatch(Event.Type.MOUSE_RELEASED, this::eventOnReleasedAdapter);
-        d.dispatch(Event.Type.MOUSE_MOVED, this::eventOnMovedAdapter);
+        d.dispatch(MOUSE_PRESSED, this::eventOnPressedAdapter);
+        d.dispatch(MOUSE_RELEASED, this::eventOnReleasedAdapter);
+        d.dispatch(MOUSE_MOVED, this::eventOnMovedAdapter);
     }
 
 
@@ -58,7 +60,7 @@ final public class uiTouchController extends Element {
     public void onRender(Graphics g) {
         collision =  new Rectangle(controller_x, controller_y, controller_size, controller_size);
         if(animation <= 1)
-            animation += (Integer.parseInt(config.getValue("ANIMATION_SPEED")) * 0.002);
+            animation += (parseInt(config.getValue("ANIMATION_SPEED")) * 0.002);
         else
             animation = 0;
         g.setColor(new Color(255,255,255,(int)(animation*100)));

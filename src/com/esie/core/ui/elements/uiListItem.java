@@ -11,6 +11,8 @@ import com.esie.core.eventObserver.OnEvent;
 import com.esie.core.eventObserver.eventTypes.MouseMotionEvent;
 import com.esie.core.eventObserver.eventTypes.MousePressedEvent;
 import com.esie.core.ui.Element;
+import static com.esie.core.eventObserver.Event.Type.*;
+import static java.lang.Integer.*;
 
 final public class uiListItem extends Element {
 
@@ -78,8 +80,8 @@ final public class uiListItem extends Element {
     @Override
     public void onEvent(Event event) {
         Dispatcher d = new Dispatcher(event);
-        d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressAdapter);
-        d.dispatch(Event.Type.MOUSE_MOVED, this::eventOnMoveAdapter);
+        d.dispatch(MOUSE_PRESSED, this::eventOnPressAdapter);
+        d.dispatch(MOUSE_MOVED, this::eventOnMoveAdapter);
     }
 
 
@@ -95,7 +97,7 @@ final public class uiListItem extends Element {
 
     @Override
     public void onRender(Graphics g) {
-        int localAnimationSpeed = Integer.parseInt(config.getValue("ANIMATION_SPEED"));
+        int localAnimationSpeed = parseInt(config.getValue("ANIMATION_SPEED"));
         g.setFont(font);
         if(renderOnce){
             alpha += localAnimationSpeed * 8;

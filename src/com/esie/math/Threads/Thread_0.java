@@ -5,7 +5,6 @@ import com.esie.math.UI.uiMainLayer;
 import com.esie.math.Forms.ColorSelectForm;
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.esie.core.ioc.parents.Window.windowStack;
 import static com.esie.core.ui.elements.uiListItemHorizontal.ListItemHorizontalStack;
 import static com.esie.core.ui.elements.uiSwitch.SwitchStack;

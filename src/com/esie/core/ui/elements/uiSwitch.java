@@ -8,7 +8,7 @@ import com.esie.core.ui.Element;
 import java.awt.*;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
+import static com.esie.core.eventObserver.Event.Type.*;
 import static java.lang.Integer.*;
 
 final public class uiSwitch extends Element {
@@ -42,7 +42,7 @@ final public class uiSwitch extends Element {
     @Override
     public void onEvent(Event event) {
         Dispatcher d = new Dispatcher(event);
-        d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressedAdapter);
+        d.dispatch(MOUSE_PRESSED, this::eventOnPressedAdapter);
     }
 
 

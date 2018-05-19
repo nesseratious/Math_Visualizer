@@ -4,6 +4,8 @@ import com.esie.core.eventObserver.Event;
 import com.esie.core.ui.Element;
 import java.awt.*;
 
+import static java.lang.Integer.*;
+
 final public class uiRectangle extends Element {
 
     private ConfigurationSingleton config = ConfigurationSingleton.getInstance("src/resources/configuration.properties");
@@ -40,7 +42,7 @@ final public class uiRectangle extends Element {
     @Override
     public void onRender(Graphics g) {
             if (renderOnce) {
-                animation += (Integer.parseInt(config.getValue("ANIMATION_SPEED")) * 0.01);
+                animation += parseInt(config.getValue("ANIMATION_SPEED")) * 0.01;
                 ah = (int) (animation * h);
                 aw = (int) (animation * w);
                 ax = (w / 2) + gX - (int)(animation * (w / 2));

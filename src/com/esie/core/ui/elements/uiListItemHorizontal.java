@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import static com.esie.core.eventObserver.Event.Type.*;
 import static com.esie.core.ioc.parents.Window.windowStack;
+import static java.lang.Integer.*;
 
 final public class uiListItemHorizontal extends Element {
 
@@ -72,8 +74,8 @@ final public class uiListItemHorizontal extends Element {
     @Override
     public void onEvent(Event event) {
         Dispatcher d = new Dispatcher(event);
-        d.dispatch(Event.Type.MOUSE_PRESSED, this::eventOnPressedAdapter);
-        d.dispatch(Event.Type.MOUSE_MOVED, this::eventOnMovedAdapter);
+        d.dispatch(MOUSE_PRESSED, this::eventOnPressedAdapter);
+        d.dispatch(MOUSE_MOVED, this::eventOnMovedAdapter);
     }
 
 
@@ -89,7 +91,7 @@ final public class uiListItemHorizontal extends Element {
 
     @Override
     public void onRender(Graphics g2) {
-        int tempAnimationSpeed = Integer.parseInt(config.getValue("ANIMATION_SPEED"));
+        int tempAnimationSpeed = parseInt(config.getValue("ANIMATION_SPEED"));
         if (this.name.equals("Settings"))
             list.set(0,new Rectangle(windowStack.get("MainForm").getWidth()-305,5,200,30));
 
