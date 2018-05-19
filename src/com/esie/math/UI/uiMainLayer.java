@@ -12,7 +12,10 @@ import static com.esie.core.eventObserver.Event.Type.*;
 import static com.esie.core.ioc.parents.Window.windowStack;
 import static com.esie.core.ui.elements.uiSwitch.SwitchStack;
 import static com.esie.core.ui.elements.uiTouchController.uiTouchControllerStack;
+import static java.awt.Color.*;
+import static java.awt.Font.*;
 import static java.awt.event.KeyEvent.*;
+import static java.lang.Math.*;
 
 public class uiMainLayer extends Element {
 
@@ -96,7 +99,7 @@ public class uiMainLayer extends Element {
                 uiLayer.Clear();
                 once = false;
             }
-            double x = -10+  uiLayer.getA()/0.0628*0.2;
+            double x = -10 + uiLayer.getA()/0.0628*0.2;
             uiLayer.Set(x, sin/100);
         }
 
@@ -108,7 +111,7 @@ public class uiMainLayer extends Element {
             g.setColor(new Color(50,50,50,200));
 
         g.setStroke(new BasicStroke(2));
-        g.setColor(Color.LIGHT_GRAY);
+        g.setColor(LIGHT_GRAY);
         g.drawRoundRect(GraphX, GraphY, GraphSize, GraphSize,15,15);
         g.drawLine(GraphX +(GraphSize /2), GraphY, GraphX +(GraphSize /2), GraphY + GraphSize);
         g.drawLine(GraphX, GraphY +(GraphSize /2), GraphX + GraphSize, GraphY +(GraphSize /2));
@@ -117,7 +120,7 @@ public class uiMainLayer extends Element {
         g.drawLine(GraphX, GraphY +(GraphSize /4)+(GraphSize /2), GraphX + GraphSize, GraphY +(GraphSize /4)+(GraphSize /2));
         g.drawLine(GraphX +(GraphSize /4), GraphY, GraphX +(GraphSize /4), GraphY +(GraphSize));
         g.drawLine(GraphX +(GraphSize /4)+(GraphSize /2), GraphY, GraphX +(GraphSize /4)+(GraphSize /2), GraphY +(GraphSize));
-        g.setColor(Color.red);
+        g.setColor(red);
 
         for (double x : data.keySet()){
             double y = data.get(x);
@@ -144,7 +147,7 @@ public class uiMainLayer extends Element {
             }
         }
 
-        g.setColor(Color.LIGHT_GRAY);
+        g.setColor(LIGHT_GRAY);
         String scale = "Scale " + scale_to_x + " : " + scale_to_y;
         g.drawString(scale, GraphX, GraphY -15);
 
@@ -153,7 +156,7 @@ public class uiMainLayer extends Element {
                        "Y=" + ((MouseY- GraphY -(GraphSize /2))/scale_to_y);
             g.drawString(s, MouseX +2, MouseY+2);
             g.setColor(new Color(255,255,255,25));
-            g.setFont(new Font("Helvetica", Font.BOLD, 28));
+            g.setFont(new Font("Helvetica", BOLD, 28));
 
             if (SwitchStack.get("Auto Scale").returnAnswer != 1)
                 g.drawString("Use ⬅︎⬆︎⬇︎➡ to scale graph", GraphX + 7, GraphY + GraphSize - 15);
@@ -166,7 +169,7 @@ public class uiMainLayer extends Element {
         int gX = 40;
         int gY = 100;
         if (isTFuncHovered){
-            g.setFont (new Font("Helvetica", Font.BOLD, 28));
+            g.setFont (new Font("Helvetica", BOLD, 28));
             g.setColor(new Color(255,255,255,25));
             g.drawString("Grag the circle to change A", gX + 7, gY + TFuncSize - 15);
         }
@@ -174,38 +177,49 @@ public class uiMainLayer extends Element {
         int r = TFuncSize /2;
         TFuncCollision = new Rectangle(gX, gY, gX + TFuncSize, gY + TFuncSize);
         g.setStroke(new BasicStroke(1));
-
-        g.setColor(Color.WHITE);
+        g.setColor(WHITE);
         g.drawOval(gX, gY, TFuncSize, TFuncSize);
         g.drawLine(gX +r, gY, gX +r, gY + TFuncSize);
         g.drawLine(gX, gY +r, gX + TFuncSize, gY +r);
+        g.setStroke(new BasicStroke(5));
+        g.setColor(BLUE);
 
-        g.setStroke(new BasicStroke(2));
-        g.setColor(Color.BLUE);
-        g.drawLine(gX +r, gY +r, gX +r+(int)(Math.cos(a)*r), gY +r);
-        g.drawLine(gX +r, gY +r, gX +r+(int)(Math.cos(a)*r), gY +r-(int)(Math.sin(a)*r));
-        g.drawLine(gX +r+(int)(Math.cos(a)*r), gY +r, gX +r+(int)(Math.cos(a)*r), gY +r-(int)(Math.sin(a)*r));
-        sin = ((gY +r)-(gY +r-(int)(Math.sin(a)*r)));
+        //line 1
+        g.drawLine(gX +r, gY +r, gX +r+(int)(cos(a)*r), gY +r);
+        //line 2
+        g.drawLine(gX +r, gY +r, gX +r+(int)(cos(a)*r), gY +r-(int)(sin(a)*r));
+        //line 3
+        g.drawLine(gX +r+(int)(cos(a)*r), gY +r, gX +r+(int)(cos(a)*r), gY +r-(int)(sin(a)*r));
 
+        sin = ((gY +r)-(gY +r-(int)(sin(a)*r)));
         g.setColor(new Color(255,255,255,100));
-        g.setFont(new Font("Helvetica", Font.BOLD, 33));
-        String tempA = "a = "; {
-            if ((a * 57.2957914) >= 0)   tempA = tempA + String.valueOf((a * 57.2957914)).charAt(0);
-            if ((a * 57.2957914) >= 10)  tempA = tempA + String.valueOf((a * 57.2957914)).charAt(1);
-            if ((a * 57.2957914) >= 100) tempA = tempA + String.valueOf((a * 57.2957914)).charAt(2);
-        }
+        g.setFont(new Font("Helvetica", BOLD, 33));
+        String tempA = "λ = ";
+        if ((a * 57.2957914) >= 0) tempA = tempA + String.valueOf((a * 57.2957914)).charAt(0);
+        if ((a * 57.2957914) >= 10) tempA = tempA + String.valueOf((a * 57.2957914)).charAt(1);
+        if ((a * 57.2957914) >= 100) tempA = tempA + String.valueOf((a * 57.2957914)).charAt(2);
+
         g.drawString(tempA, gX + r + 5, gY + r - 5);
         int uiTouchSize = uiTouchControllerStack.get("MoveF").getController_size();
 
         if (!uiTouchControllerStack.get("MoveF").dragging)
-             uiTouchControllerStack.get("MoveF").updatePosition(gX +r+(int)(Math.cos(a)*r)-(uiTouchSize/2),
-                                                                gY +r-(int)(Math.sin(a)*r)-(uiTouchSize/2));
+             uiTouchControllerStack.get("MoveF").updatePosition(gX +r+(int)(cos(a)*r)-(uiTouchSize/2),
+                                                                gY +r-(int)(sin(a)*r)-(uiTouchSize/2));
         else {
             int shift = MouseX - gX;
             int inverse_shift = TFuncSize - shift;
             int percentage_shift = (inverse_shift*100)/TFuncSize;
-            a = percentage_shift*Math.PI/100;
+            a = percentage_shift*PI/100;
         }
+
+        //line text
+        g.setColor(GRAY);
+        g.setFont(new Font("Helvetica", BOLD, 18));
+        //line 1
+        g.drawString("AB = "+(int)(cos(a)*r)+"",(int)(cos(a)*r)/2+gX+r,gY+r+18);
+        //line 3
+        g.drawString("BC = "+(int)(sin(a)*r)+"",(int)(cos(a)*r)+gX+r,-(int)(sin(a)*r)/2+gY+r+18);
+
     }
 
 
@@ -214,7 +228,7 @@ public class uiMainLayer extends Element {
     }
 
 
-    public double getA() {
+    private double getA() {
         return a;
     }
 
@@ -265,7 +279,7 @@ public class uiMainLayer extends Element {
         SwitchStack.get("Automatic").SwitchY = 100 + TFuncSize;
 
         if (SwitchStack.get("Automatic").returnAnswer == 1) {
-            if (a > (Math.PI * 2)) {
+            if (a > (PI * 2)) {
                 a = 0;
                 if (SwitchStack.get("Sync").returnAnswer >= 0) {
                     uiLayer.Clear();

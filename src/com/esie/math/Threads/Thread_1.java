@@ -11,11 +11,12 @@ public class Thread_1 extends MasterThread {
     private static volatile boolean isSettingsMenuOpened = false;
 
     @Override
-    public void main(){
+    public void main() {
 
         int tempListAnswer = ListItemHorizontalStack.get("Settings").answer;
 
         if (tempListAnswer == 1) {
+
             ListItemHorizontalStack.get("Settings").answer = 0;
             if (!isSettingsMenuOpened) {
                 new SettingsForm("Settings Items");
