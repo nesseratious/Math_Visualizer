@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import static com.esie.core.eventObserver.Event.Type.*;
 import static com.esie.core.ioc.parents.Window.windowStack;
+import static java.awt.RenderingHints.*;
 import static java.lang.Integer.*;
 
 final public class uiListItemHorizontal extends Element {
@@ -20,9 +21,7 @@ final public class uiListItemHorizontal extends Element {
     volatile public static Map<String,uiListItemHorizontal> ListItemHorizontalStack = new HashMap<>();
     private ConfigurationSingleton config = ConfigurationSingleton.getInstance("src/resources/configuration.properties");
     private Font font = new Font("Helvetica", Font.PLAIN, 16);
-    private RenderingHints rh = new RenderingHints(
-            RenderingHints.KEY_TEXT_ANTIALIASING,
-            RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+    private RenderingHints rh = new RenderingHints(KEY_TEXT_ANTIALIASING, VALUE_TEXT_ANTIALIAS_ON);
     private List<Integer> animationY = new ArrayList<>();
     private List<Rectangle> list = new ArrayList<>();
     private List<Color> listColor = new ArrayList<>();

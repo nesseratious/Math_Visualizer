@@ -5,7 +5,6 @@ import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.swing.*;
 import com.esie.core.configurationSingleton.ConfigurationSingleton;
@@ -16,16 +15,18 @@ import com.esie.core.eventObserver.eventTypes.MousePressedEvent;
 import com.esie.core.eventObserver.eventTypes.MouseReleasedEvent;
 import com.esie.core.ui.Element;
 import static java.awt.EventQueue.*;
+import static java.awt.event.WindowEvent.*;
 import static java.lang.Boolean.*;
 import static java.lang.Integer.*;
 import static java.lang.Thread.*;
+import static java.util.Objects.*;
 
 public class Window extends Canvas implements WindowInterface {
 
 	private ConfigurationSingleton configuration = ConfigurationSingleton.getInstance("src/resources/configuration.properties");
 	public static volatile Map<String, Window> windowStack = new ConcurrentHashMap<>();
 	private List<Element> elements = new ArrayList<>();
-	private int tempRefreshRate = parseInt(Objects.requireNonNull(configuration).getValue("GRAPHICS_REFRESH_RATE"));
+	private int tempRefreshRate = parseInt(requireNonNull(configuration).getValue("GRAPHICS_REFRESH_RATE"));
 	private BufferStrategy gBufferStrategy;
 	private JFrame frame;
 
@@ -109,7 +110,7 @@ public class Window extends Canvas implements WindowInterface {
 
 	@Override
 	public void close() {
-		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+		frame.dispatchEvent(new WindowEvent(frame, WINDOW_CLOSING));
 	}
 
 

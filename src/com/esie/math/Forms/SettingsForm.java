@@ -1,6 +1,8 @@
 package com.esie.math.Forms;
 import com.esie.core.ui.elements.uiListItem;
 import java.util.ArrayList;
+import java.util.List;
+
 import static com.esie.core.ioc.parents.Window.windowStack;
 
 final public class SettingsForm {
@@ -14,7 +16,7 @@ final public class SettingsForm {
 
 
     private void source() {
-        ArrayList<String> settings_items = new ArrayList<>();
+        List<String> settings_items = new ArrayList<>();
         settings_items.add("Clear this");
         settings_items.add("Clear pinned ");
         settings_items.add(" ");

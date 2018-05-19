@@ -1,13 +1,14 @@
 package com.esie.math.Threads;
 import com.esie.core.ioc.MasterThread;
 import com.esie.core.ui.elements.uiListItemHorizontal;
-import com.esie.math.UI.uiMainLayer;
 import com.esie.math.Forms.ColorSelectForm;
 import java.util.ArrayList;
 import java.util.List;
 import static com.esie.core.ioc.parents.Window.windowStack;
 import static com.esie.core.ui.elements.uiListItemHorizontal.ListItemHorizontalStack;
 import static com.esie.core.ui.elements.uiSwitch.SwitchStack;
+import static com.esie.math.UI.uiMainLayer.*;
+import static java.lang.Math.*;
 
 public class Thread_0 extends MasterThread {
 
@@ -42,13 +43,13 @@ public class Thread_0 extends MasterThread {
             if (ListItemHorizontalStack.get("Tabs").answer == 1) {
                 ListItemHorizontalStack.get("Tabs").answer = 0;
                 tab = "sin";
-                uiMainLayer.uiLayer.Clear();
+                uiLayer.Clear();
                 if (SwitchStack.get("Sync").returnAnswer <= 0) {
                     new Thread(() -> {
                         for (double i = -10; i <= 10; ) {
                             i += 0.003;
-                            double y = (Math.sin(i));
-                            uiMainLayer.uiLayer.Set(i, y);
+                            double y = (sin(i));
+                            uiLayer.Set(i, y);
                         }
                     }).run();
                 }
@@ -57,13 +58,13 @@ public class Thread_0 extends MasterThread {
             if (ListItemHorizontalStack.get("Tabs").answer == 2) {
                 ListItemHorizontalStack.get("Tabs").answer = 0;
                 tab = "cos";
-                uiMainLayer.uiLayer.Clear();
+                uiLayer.Clear();
                 if (SwitchStack.get("Sync").returnAnswer <= 0) {
                     new Thread(() -> {
                         for (double i = -10; i <= 10; ) {
                             i += 0.003;
-                            double y = (Math.cos(i));
-                            uiMainLayer.uiLayer.Set(i, y);
+                            double y = (cos(i));
+                            uiLayer.Set(i, y);
                         }
                     }).run();
                 }
@@ -72,13 +73,13 @@ public class Thread_0 extends MasterThread {
             if (ListItemHorizontalStack.get("Tabs").answer == 3) {
                 ListItemHorizontalStack.get("Tabs").answer = 0;
                 tab = "tan";
-                uiMainLayer.uiLayer.Clear();
+                uiLayer.Clear();
                 if (SwitchStack.get("Sync").returnAnswer <= 0) {
                     new Thread(() -> {
                         for (double i = -10; i <= 10; ) {
                             i += 0.003;
-                            double y = (Math.tan(i));
-                            uiMainLayer.uiLayer.Set(i, y);
+                            double y = (tan(i));
+                            uiLayer.Set(i, y);
                         }
                     }).run();
                 }
@@ -87,13 +88,13 @@ public class Thread_0 extends MasterThread {
             if (ListItemHorizontalStack.get("Tabs").answer == 4) {
                 ListItemHorizontalStack.get("Tabs").answer = 0;
                 tab = "atan";
-                uiMainLayer.uiLayer.Clear();
+                uiLayer.Clear();
                 if (SwitchStack.get("Sync").returnAnswer <= 0) {
                     new Thread(() -> {
                         for (double i = -10; i <= 10; ) {
                             i += 0.003;
-                            double y = (Math.atan(i));
-                            uiMainLayer.uiLayer.Set(i, y);
+                            double y = (atan(i));
+                            uiLayer.Set(i, y);
                         }
                     }).run();
                 }

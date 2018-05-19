@@ -15,6 +15,7 @@ import static com.esie.core.ui.elements.uiSwitch.SwitchStack;
 import static com.esie.core.ui.elements.uiTouchController.uiTouchControllerStack;
 import static java.awt.Color.*;
 import static java.awt.Font.*;
+import static java.awt.RenderingHints.*;
 import static java.awt.event.KeyEvent.*;
 import static java.lang.Math.*;
 
@@ -27,9 +28,7 @@ public class uiMainLayer extends Element {
     private int GraphY;
     private double sin;
     private Rectangle GraphCollision, TFuncCollision;
-    private RenderingHints rh = new RenderingHints(
-            RenderingHints.KEY_TEXT_ANTIALIASING,
-            RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+    private RenderingHints rh = new RenderingHints(KEY_TEXT_ANTIALIASING, VALUE_TEXT_ANTIALIAS_ON);
     private boolean once  = true;
     private boolean isGraphHovered = false;
     private boolean isTFuncHovered = false;
@@ -204,8 +203,7 @@ public class uiMainLayer extends Element {
         int uiTouchSize = uiTouchControllerStack.get("MoveF").getController_size();
 
         if (!uiTouchControllerStack.get("MoveF").dragging)
-             uiTouchControllerStack.get("MoveF").updatePosition(gX +r+(int)(cos(a)*r)-(uiTouchSize/2),
-                                                                gY +r-(int)(sin(a)*r)-(uiTouchSize/2));
+             uiTouchControllerStack.get("MoveF").updatePosition(gX +r+(int)(cos(a)*r)-(uiTouchSize/2), gY +r-(int)(sin(a)*r)-(uiTouchSize/2));
         else {
             int shift = MouseX - gX;
             int inverse_shift = TFuncSize - shift;
@@ -221,7 +219,7 @@ public class uiMainLayer extends Element {
         //line 3
         g.drawString("BC = "+(int)(sin(a)*r)+"",(int)(cos(a)*r)+gX+r,-(int)(sin(a)*r)/2+gY+r+18);
 
-        ImageStack.get("Unit_circle_angles.png").setPosition(gX+r-193, gY+r-193);
+        ImageStack.get("Unit_circle_angles.png").setPosition(gX+r-192, gY+r-190);
     }
 
 

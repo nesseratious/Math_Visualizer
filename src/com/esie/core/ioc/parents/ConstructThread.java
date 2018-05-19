@@ -3,13 +3,15 @@ import com.esie.core.configurationSingleton.ConfigurationSingleton;
 import com.esie.core.ioc.MasterThread;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import static com.esie.core.configurationSingleton.ConfigurationSingleton.*;
 import static java.lang.Boolean.*;
 import static java.lang.Integer.*;
 import static java.lang.Thread.*;
 
 public class ConstructThread implements ConstructThreadInterface {
 
-    private ConfigurationSingleton config = ConfigurationSingleton.getInstance("src/resources/configuration.properties");
+    private ConfigurationSingleton config = getInstance("src/resources/configuration.properties");
     volatile public static Map<String, ConstructThreadInterface> ThreadStack = new ConcurrentHashMap<>();
     private boolean running = true;
     private int REFRESH_RATE;

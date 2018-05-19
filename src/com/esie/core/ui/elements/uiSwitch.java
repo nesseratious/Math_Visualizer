@@ -9,6 +9,7 @@ import java.awt.*;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import static com.esie.core.eventObserver.Event.Type.*;
+import static java.awt.RenderingHints.*;
 import static java.lang.Integer.*;
 
 final public class uiSwitch extends Element {
@@ -18,9 +19,7 @@ final public class uiSwitch extends Element {
     private Font font = new Font("Helvetica", Font.PLAIN, 16);
     private String name;
     private Rectangle collision;
-    private RenderingHints rh = new RenderingHints(
-            RenderingHints.KEY_TEXT_ANTIALIASING,
-            RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+    private RenderingHints rh = new RenderingHints(KEY_TEXT_ANTIALIASING, VALUE_TEXT_ANTIALIAS_ON);
     private boolean renderOnce = true;
     private boolean answer = false;
     private int[] colorHovered = {160,22,0};

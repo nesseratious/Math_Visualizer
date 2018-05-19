@@ -4,7 +4,6 @@ import com.esie.core.eventObserver.Event;
 import com.esie.core.eventObserver.OnEvent;
 import com.esie.core.eventObserver.eventTypes.MousePressedEvent;
 import com.esie.core.ui.Element;
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
@@ -16,6 +15,7 @@ import static com.esie.core.eventObserver.Event.Type.*;
 import static com.esie.core.ioc.parents.Window.windowStack;
 import static com.esie.core.ui.elements.uiListItemHorizontal.ListItemHorizontalStack;
 import static com.esie.math.UI.uiMainLayer.uiLayer;
+import static javax.imageio.ImageIO.*;
 
 final public class uiColorSelector extends Element {
 
@@ -34,10 +34,10 @@ final public class uiColorSelector extends Element {
         this.imageCoordY = imageCoorY;
         this.name = name;
         try {
-            wallpaper = ImageIO.read(new File("src/resources/" + name));
+            wallpaper = read(new File("src/resources/" + name));
         } catch (IOException ignored) {
             try {
-                wallpaper = ImageIO.read(new File("resources/" + name));
+                wallpaper = read(new File("resources/" + name));
             } catch (IOException e) { e.printStackTrace(); }
         }
         ImageStack.put(name, this);
