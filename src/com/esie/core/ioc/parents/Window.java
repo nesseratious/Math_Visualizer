@@ -20,6 +20,7 @@ import static java.lang.Boolean.*;
 import static java.lang.Integer.*;
 import static java.lang.Thread.*;
 import static java.util.Objects.*;
+import static javax.swing.JFrame.*;
 
 public class Window extends Canvas implements WindowInterface {
 
@@ -77,9 +78,9 @@ public class Window extends Canvas implements WindowInterface {
 	private void init(String name) {
 		frame = new JFrame(name);
 		if (name.equals("MainForm")) {
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 			frame.setMinimumSize(new Dimension(1490,650));
-		} else frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		} else frame.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		frame.add(this);
 		frame.pack();
 		if (parseBoolean(configuration.getValue("CENTERED"))) frame.setLocationRelativeTo(null);
